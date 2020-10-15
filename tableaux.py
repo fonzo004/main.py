@@ -16,7 +16,7 @@ letrasProposicionales = [chr(x) for x in range(97, 123)]
 listaInterpsVerdaderas = [] 
 # inicializa la lista de hojas
 listaHojas = []
-
+ 
 #ConectivosBinarios = ["Y","O",">","<->"]
 
 ##############################################################################
@@ -106,12 +106,20 @@ def es_literal(f):
 
 print(es_literal(T2)) 
 
+M = [Tree('q',None,None),Tree('-',None,Tree('p',None,None)),Tree('-',None,Tree('-',None,Tree('p',None,None))),Tree('-',None,Tree('q',None,None))]
 def no_literales(l):
 	# Esta función determina si una lista de fórmulas contiene
 	# solo literales
 	# Input: l, una lista de fórmulas como árboles
 	# Output: None/f, tal que f no es literal
-	return False
+    for f in l:
+       	if not es_literal(f):
+        	return "No todos son literales: " + Inorder(f)
+    return "None: Solo hay literales" 
+    #return None
+
+print(no_literales(M)) 
+
 
 T1 = Tree('O',Tree('-',None,Tree('s',None,None)),Tree('Y',Tree('t',None,None),Tree('>',Tree('u',None,None),Tree('v',None,None))))
 def Clasificacion(a): 
